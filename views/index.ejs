@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Daily Mood Tracker</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Your Mood Tracker</h1>
+
+      <% if (moods.length === 0) { %>
+      <p>No entries yet.</p>
+      <% } else { %>
+      <p>Current Positive Streak: <%= streak %> day(s)</p>
+      <h3>Recent Moods:</h3>
+      <ul>
+        <% moods.slice(-5).reverse().forEach(mood => { %>
+        <li><%= mood %></li>
+        <% }); %>
+      </ul>
+      <% } %>
+
+      <form action="/add" method="POST">
+        <label>How do you feel today?</label>
+        <select name="mood" required>
+          <option value="">-- Select Mood --</option>
+          <option value="Happy">Happy</option>
+          <option value="Excited">Excited</option>
+          <option value="Sad">Sad</option>
+          <option value="Stressed">Stressed</option>
+          <option value="Okay">Okay</option>
+        </select>
+        <button type="submit">Submit Mood</button>
+      </form>
+
+      <form action="/summary" method="GET">
+        <button type="submit">View Mood Summary</button>
+      </form>
+    </div>
+  </body>
+</html>

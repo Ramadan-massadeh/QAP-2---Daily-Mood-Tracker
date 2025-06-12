@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mood Summary</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mood Summary</h1>
+
+      <% if (moods.length === 0) { %>
+      <p>No moods submitted yet.</p>
+      <% } else { %>
+      <p>Current Positive Streak: <%= streak %> day(s)</p>
+
+      <h3>All Mood Entries:</h3>
+      <ul>
+        <% moods.slice().reverse().forEach(mood => { %>
+        <li><%= mood %></li>
+        <% }); %>
+      </ul>
+      <% } %>
+
+      <a href="/">Back to Home</a>
+    </div>
+  </body>
+</html>
